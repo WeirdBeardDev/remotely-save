@@ -2,14 +2,12 @@ import merge from "lodash/merge";
 import Mustache from "mustache";
 import { moment } from "obsidian";
 
-import { LANGS as LANGS_PRO } from "../pro/src/langs";
 import { LANGS as LANGS_BASIC } from "./langs";
-
-const LANGS = merge(LANGS_BASIC, LANGS_PRO);
+const LANGS = merge(LANGS_BASIC);
 
 export type LangType = keyof typeof LANGS;
 export type LangTypeAndAuto = LangType | "auto";
-export type TransItemType = keyof (typeof LANGS)["en"];
+export type TransItemType = string;
 
 export class I18n {
   lang: LangTypeAndAuto;
@@ -35,7 +33,9 @@ export class I18n {
     }
 
     const res: string =
-      (LANGS[realLang] as (typeof LANGS)["en"])[key] || LANGS["en"][key] || key;
+      (LANGS[realLang] as Record<string, string>)[key] ||
+      (LANGS["en"] as Record<string, string>)[key] ||
+      key;
     return res;
   }
 

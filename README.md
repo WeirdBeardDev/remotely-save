@@ -1,7 +1,5 @@
 # Remotely Save
 
-English | [中文](./README.zh-cn.md)
-
 This is yet another unofficial sync plugin for Obsidian. If you like it or find it useful, please consider give it a [star ![GitHub Repo stars](https://img.shields.io/github/stars/fyears/remotely-save?style=social)](https://github.com/fyears/remotely-save) on Github.
 
 [![BuildCI](https://github.com/fyears/remotely-save/actions/workflows/auto-build.yml/badge.svg)](https://github.com/fyears/remotely-save/actions/workflows/auto-build.yml)
@@ -22,15 +20,8 @@ This is yet another unofficial sync plugin for Obsidian. If you like it or find 
   - Amazon S3 or S3-compatible (Cloudflare R2 / BackBlaze B2 / MinIO / ...)
   - Dropbox
   - OneDrive for personal (App Folder)
-  - OneDrive for personal (Full) (PRO feature)
   - Webdav (NextCloud / InfiniCloud / Synology webdav server / ...)
   - Webdis
-  - Google Drive (GDrive) (PRO feature)
-  - Box (PRO feature)
-  - pCloud (PRO feature)
-  - Yandex Disk (PRO feature)
-  - Koofr (PRO feature)
-  - Azure Blob Storage (PRO feature)
   - [Here](./docs/services_connectable_or_not.md) shows more connectable (or not-connectable) services in details.
 - **Obsidian Mobile supported.** Vaults can be synced across mobile and desktop devices with the cloud service as the "broker".
 - **[End-to-end encryption](./docs/encryption/README.md) supported.** Files would be encrypted using openssl / rclone crypt format before being sent to the cloud **if** user specify a password.
@@ -38,7 +29,7 @@ This is yet another unofficial sync plugin for Obsidian. If you like it or find 
 - **[Minimal Intrusive](./docs/minimal_intrusive_design.md).**
 - **Skip Large files** and **skip paths** by custom regex conditions!
 - **[Sync Algorithm](./docs/sync_algorithm/v3/intro.md) is provided for discussion.**
-- **[Basic Conflict Detection And Handling](./docs/sync_algorithm/v3/intro.md)** for free version. **[Advanced Smart Conflict Handling](./pro/README.md)** for PRO version. 
+- **[Basic Conflict Detection And Handling](./docs/sync_algorithm/v3/intro.md)**.
 - Source Available. See [License](./LICENSE) for details.
 
 ## Limitations
@@ -102,7 +93,7 @@ Additionally, the plugin author may occasionally visit Obsidian official forum a
 
 - **This plugin is NOT an official Microsoft / OneDrive product.** The plugin just uses Microsoft's [OneDrive's public API](https://docs.microsoft.com/en-us/onedrive/developer/rest-api).
 - This plugin only works for "OneDrive for personal", and not works for "OneDrive for Business" (yet). See [#11](https://github.com/fyears/remotely-save/issues/11) to further details.
-- After the authorization, the plugin can read your name and email, and read and write files in your OneDrive's `/Apps/remotely-save` folder. **The free version of Remotely Save only connects to App Folder, while the PRO version can connect to the root folder in Onedrive. See below PRO part.** 
+- After the authorization, the plugin can read your name and email, and read and write files in your OneDrive's `/Apps/remotely-save` folder.
 - If you decide to authorize this plugin to connect to OneDrive, please go to plugin's settings, and choose OneDrive then follow the instructions.
 - Password-based end-to-end encryption is also supported. But please be aware that **the vault name itself is not encrypted**.
 - If you want to sync the files across multiple devices, **your vault name should be the same** while using default settings.
@@ -135,42 +126,6 @@ Additionally, the plugin author may occasionally visit Obsidian official forum a
 - Mostly experimental.
 - You have to setup and protect your web server by yourself.
 
-### Onedrive (Full access) (PRO feature)
-
-PRO (paid) feature "sync with Onedrive (Full)" allows users to to sync with Onedrive root folder. Tutorials and limitations are documented [here](./docs/remote_services/onedrivefull/README.md).
-
-### Google Drive (GDrive) (PRO feature)
-
-PRO (paid) feature "sync with Google Drive" allows users to to sync with Google Drive. Tutorials and limitations are documented [here](./docs/remote_services/googledrive/README.md).
-
-### Box (PRO feature)
-
-PRO (paid) feature "sync with Box" allows users to to sync with Box. Tutorials and limitations are documented [here](./docs/remote_services/box/README.md).
-
-### pCloud (PRO feature)
-
-PRO (paid) feature "sync with pCloud" allows users to to sync with pCloud (using its native API instead of webdav). Tutorials and limitations are documented [here](./docs/remote_services/pcloud/README.md).
-
-### Yandex Disk (PRO feature)
-
-PRO (paid) feature "sync with Yandex Disk" allows users to to sync with Yandex Disk (using its native API instead of webdav). Tutorials and limitations are documented [here](./docs/remote_services/yandexdisk/README.md).
-
-### Koofr (PRO feature)
-
-PRO (paid) feature "sync with Koofr" allows users to to sync with Koofr (using its native API instead of webdav). Tutorials and limitations are documented [here](./docs/remote_services/koofr/README.md).
-
-### Azure Blob Storage (PRO feature)
-
-PRO (paid) feature "sync with Azure Blob Storage" allows users to to sync with Azure Blob Storage. Tutorials and limitations are documented [here](./docs/remote_services/azureblobstorage/README.md).
-
-## Smart Conflict (PRO feature)
-
-Basic (free) version can detect conflicts, but users have to choose to keep newer version or larger version of the files.
-
-PRO (paid) feature "Smart Conflict" gives users one more option: merge small markdown files, or duplicate large markdown files or any-size non-markdown files.
-
-See documents [here](./docs/pro/README.md)
-
 ## Scheduled Auto Sync
 
 - You can configure auto syncing every N minutes in settings.
@@ -196,9 +151,9 @@ Moreover, the bookmarks of Obsidian are actually stored in `.obsidian/bookmarks.
 
 In the latest version, you can change the settings to allow syncing `_` files or folders, as well as `.obsidian` special config folder as described above (but not any other `.` files or folders).
 
-## PRO (paid) Features
+## Basic-only fork note
 
-See [PRO](./docs/pro/README.md) for more details.
+This fork is intentionally basic-only and removes the pro code path.
 
 ## How To Debug
 
